@@ -32,7 +32,7 @@ const Header = (props) => {
                         {
                             user ? 
                             <Link to="/" className="nav-link">
-                                <button onClick={() => {logOut()}} className="btn btn-danger rounded-pill">Sign Out</button>
+                                <button onClick={() => {logOut()}} className="btn btn-danger btn-rounded">Sign Out</button>
                             </Link>
                             :
                             <Link to="/login" className="nav-link">
