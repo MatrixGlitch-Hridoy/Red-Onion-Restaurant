@@ -1,12 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './Header.css';
-import Logo from '../../Images/logo2.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
-import { useAuth } from '../SignUp/useAuth';
+import Logo from '../../images/logo2.png'
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import useAuth from '../../hooks/useAuth';
 const Header = (props) => {
-    const auth = useAuth();
+    const {user,logOut} = useAuth();
     return (
         <nav className="navbar navbar-expand navbar-light bg-white py-2 fixed-top">
             <div className="container">
@@ -16,21 +15,24 @@ const Header = (props) => {
                
                 <ul className="navbar-nav align-items-center">
                     <li className="nav-item active">
-                        <Link to="/checkout" className="nav-link"><FontAwesomeIcon className="cart-icon" icon={faCartArrowDown} /><span className="badge bg-light">{props.cart.length}</span></Link>
+                        <Link to="/checkout" className="nav-link">
+                            {/* <FontAwesomeIcon className="cart-icon" icon={faCartArrowDown} /><span className="badge bg-light">{props.cart.length}</span> */}
+                            <AiOutlineShoppingCart className="cart-icon fs-5"/><span className="badge bg-light">0</span>
+                        </Link>
                     </li>
                     <li className="nav-item">
                         {
-                            auth.user ?  
-                             <Link to="/checkout" className="nav-link">{auth.user.displayName}</Link> 
+                            user ?  
+                             <Link to="/checkout" className="nav-link">{user.displayName}</Link> 
                              :
                              <Link to="/login" className="nav-link">Login</Link> 
                         }
                     </li>
                     <li className="nav-item">
                         {
-                            auth.user ? 
+                            user ? 
                             <Link to="/" className="nav-link">
-                                <button onClick={() => {auth.signOut()}} className="btn btn-danger btn-rounded">Sign Out</button>
+                                <button onClick={() => {logOut()}} className="btn btn-danger rounded-pill">Sign Out</button>
                             </Link>
                             :
                             <Link to="/login" className="nav-link">

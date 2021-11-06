@@ -14,7 +14,7 @@ const Banner = () => {
                 <div className="search-box col-md-6 my-5 mx-auto">
                     <input id="query" onChange={getQuery} type="text" className="form-control" placeholder="Search Food Item" />
                     <Link to={"/search="+searchQuery}>
-                        <button onClick={() => window.scrollBy(0, 500)} className="btn btn-danger search-btn btn-rounded">Search</button>
+                        <button onClick={() => window.scrollBy(0, 500)} className="btn btn-danger search-btn rounded-pill px-4">Search</button>
                     </Link>
                 </div>
             </div>
